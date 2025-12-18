@@ -1,17 +1,16 @@
 var playlist = [
     {
-        "song": "SENTAR PRO TREM",
-        "album": "N/A",
-        "artist": "MC MARCELO DA CJ, MC 2G, MC JACARÉ",
-        "mp3": ""
-    },
-        {
         "song": "Turquia",
         "album": "N/A",
         "artist": "Cantor",
-        "mp3": "https://www.youtube.com/watch?v=rYTS8Ktx8yA&list=RDrYTS8Ktx8yA&start_radio=1"
-
+        "mp3": "../music/Turquia.mp3"
     }, 
+    {
+        "song": "DJ-BOY",
+        "album": "N/A",
+        "artist": "MC Joãozinho VT",
+        "mp3": "../music/DJ-BOY.mp3"
+    }
 ];
 
 var rot = 0;

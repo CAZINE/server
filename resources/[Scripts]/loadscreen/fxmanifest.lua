@@ -2,7 +2,7 @@
 fx_version 'bodacious'
 game 'gta5'
 
-author 'Gaara'
+author 'xBRUNOx'
 contact 'Discord : Gaara#0001'
 version '1.0.0'
 
@@ -13,6 +13,11 @@ client_scripts {
 files {
     'nui/*',
     'nui/**/*'
+}
+-- incluir músicas do loadscreen
+files {
+    'music/*',
+    'music/**/*'
 }
 
 loadscreen 'nui/darkside.html'
