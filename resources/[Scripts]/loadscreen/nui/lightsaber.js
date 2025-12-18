@@ -6,7 +6,7 @@ var playlist = [
         "mp3": "../music/Turquia.mp3"
     }, 
     {
-        "song": "DJ-BOY",
+        "song": "DJ BOY",
         "album": "N/A",
         "artist": "MC Joãozinho VT",
         "mp3": "../music/DJ-BOY.mp3"
