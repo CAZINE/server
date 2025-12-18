@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-color: #f0f4f8; /* Fonte clara */
+    --background-color: #0e1a2b; /* Fundo escuro azul */
+    --primary-color: #2d397a ; /* Verde principal */
+    --secondary-color: #2d397a ; /* Verde secundário */
+    --accent-color: #132235; /* Fundo dos inputs */
+    --hover-color: #1e1f5a; /* Hover/button */
+    --font-family: 'Montserrat', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    color: var(--main-color);
+    font-family: var(--font-family);
+}
+
+button, input {
+    outline: none;
+    border: none;
+    font-family: var(--font-family);
+}
+
+.radio-interface {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 2vw;
+}
+
+.radio-modal {
+    width: 22vw;
+    background: var(--accent-color);
+    border-radius: 1vw;
+    padding: 1.2vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.4);
+    border: 0.15vw solid var(--primary-color);
+}
+
+.radio-modal h1 {
+    text-align: center;
+    font-size: 1.4vw;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.input-radio-disconnect {
+    width: 100%;
+    height: 3vw;
+    background: var(--primary-color);
+    border-radius: 0.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.input-radio-disconnect:hover {
+    background: var(--hover-color);
+}
+
+.input-radio-disconnect span {
+    font-size: 1.2vw;
+    font-weight: 500;
+    color: #fff;
+}
+
+.input-radio {
+    width: 100%;
+    height: 2.8vw;
+    background: var(--accent-color);
+    border: 0.1vw solid var(--secondary-color);
+    border-radius: 0.5vw;
+    display: flex;
+    overflow: hidden;
+}
+
+.input-radio input {
+    flex: 1;
+    padding: 0 1vw;
+    background: transparent;
+    color: var(--main-color);
+    font-size: 0.95vw;
+}
+
+.input-radio .input-radio-button {
+    width: 3vw;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.input-radio .input-radio-button:hover {
+    background: var(--hover-color);
+}
+
+.input-radio-volum {
+    width: 100%;
+}
+
+.input-radio-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85vw;
+    color: var(--main-color);
+    margin-bottom: 0.3vw;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 0.5vw;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 0.25vw;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 1vw;
+    width: 1vw;
+    border-radius: 50%;
+    background: #fff;
+    border: 0.15vw solid var(--primary-color);
+    cursor: pointer;
+    box-shadow: 0 0 0.2vw rgba(0, 0, 0, 0.3);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    background: transparent;
+}
+
+/* Remove setas dos inputs numéricos */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.radio-interface.talking-radio {
+    box-shadow: 0 0 2vw 0.5vw #1e5a1e, 0 0 0.5vw 0.2vw #fff;
+    border: 0.3vw solid #2d397a ;
+    transition: box-shadow 0.2s, border 0.2s;
+}
+
+#radio-toast {
+    position: fixed;
+    bottom: 20vw;
+    left: 2vw;
+    z-index: 9999;
+    display: none;
+    background: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0;
+    animation: none;
+}
+
+#radio-voice-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.6vw;
+}
+
+.speaker-anim {
+    width: 18px;
+    height: 18px;
+    stroke: #fff;
+    fill: none;
+    animation: pulseSpeaker 1s infinite;
+}
+
+@keyframes pulseSpeaker {
+    0% { opacity: 1; transform: scale(1);}
+    50% { opacity: 0.7; transform: scale(1.15);}
+    100% { opacity: 1; transform: scale(1);}
+}
+
+.radio-voice-name {
+    color: #fff;
+    font-size: 0.75vw;
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 0 0 2px #000;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin: 0;
+}

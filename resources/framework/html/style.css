@@ -1,0 +1,309 @@
+#spectate-hud {
+  position: absolute;
+  top: 70vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.spectate-box {
+  background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(19, 16, 185, 0.1) 100%);
+  border-radius: 12px;
+  padding: 18px 24px;
+  min-width: 360px;
+  color: #fff;
+  margin-bottom: 16px;
+  border: 1px solid rgba(16, 69, 185, 0.3);
+  box-shadow: 0 8px 32px rgba(16, 69, 185, 0.3);
+}
+
+.spectate-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.spectate-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spectate-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ping-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(16, 61, 185, 0.15);
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(16, 41, 185, 0.3);
+}
+
+.ping-value {
+  color: #102fb9;
+  font-size: 0.85em;
+  font-weight: bold;
+}
+
+.spectate-score {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+  margin-left: auto;
+  font-size: 0.9em;
+  padding-right: 0;
+}
+
+.spectate-id-bar {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.spectate-id {
+  background: rgba(16, 41, 185, 0.25); /* Verde translúcido */
+  color: #fff; /* Texto branco */
+  border: 2px solid #1029b9; /* Borda verde */
+  padding: 2px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-right: 8px;
+  font-size: 1em;
+  box-shadow: 0 2px 8px rgba(16, 61, 185, 0.15);
+  letter-spacing: 1px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.spectate-health-bar {
+  flex: 1;
+  height: 10px;
+  background: #444;
+  border-radius: 5px;
+  margin-right: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.spectate-health-fill {
+  background: linear-gradient(90deg, #101bb9 0%, #052796 100%);
+  height: 100%;
+  border-radius: 5px 0 0 5px;
+  transition: width 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.health-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: healthGlow 2s infinite;
+}
+
+.icon-heart {
+  color: #1045b9;
+  font-size: 1.1em;
+}
+
+.spectate-respawn {
+  background: rgba(0,0,0,0.7);
+  border-radius: 6px;
+  padding: 6px 18px;
+  display: flex;
+  align-items: center;
+  font-size: 1.1em;
+  font-weight: bold;
+  justify-content: center;
+}
+
+.spectate-respawn-key {
+  background: #000;
+  color: #fff;
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin-right: 8px;
+}
+
+.spectate-respawn-text {
+  color: #fff;
+}
+
+.spectate-respawn-text .highlight {
+  color: #1037b9;
+}
+
+.level-label {
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 0.9em;
+}
+
+.level-value {
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.9em;
+  margin-left: 2px;
+}
+
+.spectate-name {
+  color: #fff;
+  flex: 1;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+.spectate-viewers {
+  color: #fff;
+  margin-right: 8px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.icon-eye {
+  display: flex;
+  align-items: center;
+  margin-right: 4px;
+  font-size: 20px;
+}
+
+
+
+@keyframes toastInTop {
+  0% { transform: translateX(-50%) translateY(-60px); opacity: 0; }
+  100% { transform: translateX(-50%) translateY(0); opacity: 0.85; }
+}
+@keyframes toastOutTop {
+  0% { transform: translateX(-50%) translateY(0); opacity: 0.85; }
+  100% { transform: translateX(-50%) translateY(-60px); opacity: 0; }
+}
+.toast-in-top {
+  animation: toastInTop 0.5s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.toast-out-top {
+  animation: toastOutTop 0.4s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+#anuncio-toast {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #33074d 70%, #33074d 100%);
+  color: #fff;
+  border-radius: 18px;
+  padding: 16px 24px;
+  min-width: 320px;
+  max-width: 400px;
+  box-shadow: 0 8px 40px #000a;
+  z-index: 10001;
+  opacity: 0.85;
+  border: 2.5px solid #000a;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.anuncio-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #a78bfa33;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 18px;
+  box-shadow: 0 2px 8px #a78bfa44;
+}
+
+.anuncio-avatar img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #a78bfa;
+}
+
+.anuncio-conteudo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.anuncio-admin {
+  font-size: 0.98rem;
+  color: #cbb6f7;
+  margin-top: 6px;
+  font-weight: 400;
+}
+
+/* Animações dos SVGs */
+@keyframes eyeBlink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes pingWave {
+  0% { stroke-dasharray: 0 100; }
+  100% { stroke-dasharray: 100 0; }
+}
+
+@keyframes healthGlow {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes eyePupil {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(2px); }
+  75% { transform: translateX(-2px); }
+}
+
+@keyframes pulse {
+  0% { filter:drop-shadow(0 0 0 #1037b9); }
+  100% { filter:drop-shadow(0 0 8px #1037b9); }
+}
+
+@keyframes party {
+  0% { filter:drop-shadow(0 0 0 #1037b9); transform:rotate(-8deg) scale(1.05); }
+  100% { filter:drop-shadow(0 0 16px #1037b9); transform:rotate(8deg) scale(1.13); }
+}
+
+/* Aplicar animações */
+.eye-svg {
+  animation: pulse 2s infinite;
+}
+
+.eye-pupil {
+  animation: eyePupil 4s infinite;
+}
+
+.heart-beat {
+  animation: heartBeat 1.5s infinite;
+}
+
+.ping-waves {
+  stroke-dasharray: 100;
+  animation: pingWave 2s infinite;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <title>Painel de Armas - ZTK PVP</title>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <div class="header-content">
+        <div class="title-section">
+          <h1>PAINEL DE ARMAS</h1>
+          <p>ESCOLHA SUA ARMA</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="weapon-tabs">
+      <button id="fuzil" class="active" onclick="app.selectCategory('fuzil')">FUZIL</button>
+      <button id="pistola" onclick="app.selectCategory('pistola')">PISTOLA</button>
+      <button id="smg" onclick="app.selectCategory('smg')">SMG</button>
+    </div>    
+
+    <main>
+      <div class="weapon-list" id="weaponList">
+        <!-- As armas vão aparecer aqui -->
+      </div>
+    </main>
+
+    <footer>
+      <span>ESC</span>
+      <p>Para fechar essa página.</p>
+    </footer>
+  </div>
+
+  <script src="./scripts/main.js?v=20241220"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+RegisterNetEvent('pvp:closeLoadscreen')
+AddEventHandler('pvp:closeLoadscreen', function()
+    SendNUIMessage({ action = 'close' })
+    SetNuiFocus(false, false)
+end)

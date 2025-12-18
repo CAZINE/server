@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>FIRE Kill Notify UI</title>
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src * data: blob: 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; media-src *; img-src * data:;">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      background: none;
+      background-color: rgba(0, 0, 0, 0);
+      font-family: 'Montserrat', 'DM Sans', sans-serif;
+      overflow: hidden;
+    }
+
+    .div_registro {
+      position: fixed;
+      bottom: 250px;
+      right: 30px;
+      background: rgba(18, 18, 18, 0.95);
+      color: #e1e1e1;
+      padding: 12px 16px;
+      border-left: 3px solid #270430;
+      background: linear-gradient(rgba(18, 18, 18, 0.747), rgba(18, 18, 18, 0.692)), url('https://cdn.discordapp.com/attachments/1363034058858430614/1368184541876981830/Design_sem_nome_3.gif?ex=6888ada6&is=68875c26&hm=4bebc12d9b2bd08cf2799f819ca0452b3c965f95a638f3b77716cc5145910a92&');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 8px;
+      width: 230px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+      display: none;
+      font-size: 13px;
+    }
+
+    .div_registro .name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .div_registro p {
+      line-height: 1.4;
+    }
+
+    .div_registro p b {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    #container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(10, 10, 10, 0.98);
+      background-image: url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+      opacity: 0;
+      transition: all 0.4s ease;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    #container.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    .header {
+      position: relative;
+      text-align: center;
+      margin-bottom: 40px;
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    .header::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 800px;
+      height: 8px;
+      background: linear-gradient(90deg, #280544, #000000, #280544);
+      filter: blur(12px);
+      z-index: 0;
+      border-radius: 8px;
+      animation: glowLine 4s linear infinite;
+    }
+
+    @keyframes glowLine {
+      0% {
+        background-position: 0%
+      }
+
+      100% {
+        background-position: 200%
+      }
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      font-size: 32px;
+      font-weight: 700;
+      color: #280544;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 i {
+      animation: spin 4s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .content {
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 20px;
+    }
+
+    .ranking {
+      flex: 1 1 100%;
+    }
+
+    ul {
+      list-style: none;
+      width: 100%;
+    }
+
+    li {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #eee;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    li:hover {
+      transform: translateX(5px);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(41, 3, 63, 0.2);
+    }
+
+    .rank {
+      font-weight: 600;
+      font-size: 18px;
+      color: #FFD700;
+      width: 40px;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+
+    .gang {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      color: #fff;
+      gap: 12px;
+    }
+
+    .gang i {
+      color: #280544;
+      font-size: 18px;
+    }
+
+    .count {
+      font-weight: 600;
+      font-size: 18px;
+      color: #FFD1D1;
+      min-width: 60px;
+      text-align: right;
+      text-shadow: 0 0 10px rgba(255, 209, 209, 0.3);
+    }
+
+    .info-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 18px;
+      border-radius: 12px;
+      color: #ccc;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .info-box h2 {
+      font-size: 16px;
+      color: #280544;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .discord-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      position: absolute;
+      top: 5vh;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @media screen and (min-width: 1600px) {
+      .discord-tag {
+        top: 7vh;
+      }
+    }
+
+    .discord-tag .white {
+      color: white;
+    }
+
+    .discord-tag .red {
+      color: #270430;
+    }
+
+    .kill-container {
+      position: absolute;
+      bottom: 250px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    .kill-notify {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 14px;
+      color: #fff;
+      gap: 2px;
+      animation: killPop 2.8s ease forwards;
+    }
+
+    .kill-notify i {
+      color: #270430;
+      font-size: 17px;
+    }
+
+    @keyframes killPop {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      10%,
+      80% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+    }
+
+    .timer-container {
+      position: absolute;
+      top: 74vh;
+      left: 42px;
+      background: rgba(20, 20, 20, 0.75);
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      display: none;
+      align-items: center;
+      gap: 6px;
+      animation: fadeIn 0.4s ease forwards;
+      z-index: 1000;
+    }
+
+    .timer-container i {
+      color: #270430;
+      font-size: 14px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .radio-voice-container {
+      position: fixed;
+      top: 50%;
+      right: 30px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: flex-end;
+      gap: 4px;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    .radio-voice {
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .radio-voice i {
+      color: #270430;
+      font-size: 15px;
+    }
+
+    .close-instruction {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 76, 76, 0.1);
+      padding: 8px 16px;
+      border-radius: 20px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(41, 3, 63, 0.2);
+      backdrop-filter: blur(5px);
+      animation: pulse 2s infinite;
+    }
+
+    .close-instruction i {
+      color: #280544;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(41, 3, 63, 0.2);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(255, 76, 76, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 76, 76, 0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="discord-tag">
+  </div>
+  <div class="kill-container" id="killContainer"></div>
+  <div class="timer-container" id="timerContainer">
+    <i class="fa-solid fa-clock"></i> <span id="timerText">03:00</span>
+  </div>
+  <div class="div_registro" id="identity-box"></div>
+  <div class="radio-voice-container" id="radioVoiceContainer"></div>
+  <div id="container">
+    <div class="header">
+      <h1><i class="fa-solid fa-trophy"></i> TOP 10 DOMINAÇÕES</h1>
+    </div>
+    <div class="content">
+      <div class="ranking">
+        <ul id="list"></ul>
+      </div>
+    </div>
+    <div class="close-instruction">
+      <i class="fa-solid fa-keyboard"></i> Pressione <strong>K</strong> para fechar
+    </div>
+  </div>
+  <script>
+    const identityBox = document.getElementById("identity-box");
+    const container = document.getElementById("container");
+    const killQueue = [];
+    let isKillShowing = false;
+    let dominationActive = false;
+    let dominationTimeLeft = 0;
+    const timerElement = document.getElementById('timerContainer');
+    const timerText = document.getElementById('timerText');
+
+    window.addEventListener("message", function (event) {
+      const data = event.data;
+
+      if (data.action === "showIdentity") {
+        const d = data.data;
+        identityBox.innerHTML = `
+          <div class="name">${d.name} ${d.name2} <b>#${d.id}</b></div>
+          <p><b>VIP:</b> ${d.vip}</p>
+          <p><b>STAFF:</b> ${d.staff}</p>
+          <p><b>STREAMER:</b> ${d.streamer}</p>
+          <p><b>BOOSTER:</b> ${d.booster}</p>
+          <p><b>KILLS:</b> ${d.kills} • <b>MORTES:</b> ${d.deaths} • <b>KDR:</b> ${d.kdr}</p>
+          ${d.gang ? `<p><b>GANGUE:</b> [${d.gang}] • <b>DOMINAÇÕES:</b> ${d.dominations}</p>` : ""}
+        `;
+        identityBox.style.display = "block";
+      }
+
+      if (data.action === "hideIdentity") {
+        identityBox.style.display = "none";
+      }
+
+      if (data.action === "showTop") {
+        const list = document.getElementById("list");
+        list.innerHTML = "";
+        data.data.forEach((item, index) => {
+          const li = document.createElement("li");
+          li.innerHTML = `
+            <span class="rank">${index + 1}º</span>
+            <span class="gang"><i class="fa-solid fa-globe"></i> ${item.gang}</span>
+            <span class="count">${item.count}</span>
+          `;
+          list.appendChild(li);
+        });
+        container.classList.add("show");
+      }
+
+      if (data.action === "hideTop") {
+        container.classList.remove("show");
+      }
+
+      if (data.type === 'notifyKill' && data.victim) {
+        killQueue.push({ victim: data.victim, icon: data.icon || "gun" });
+        if (!isKillShowing) processKillQueue();
+      }
+
+      if (data.type === 'startTimer') {
+        dominationActive = true;
+        dominationTimeLeft = data.time;
+        timerElement.style.display = 'flex';
+        updateTimerDisplay();
+      }
+
+      if (data.type === 'stopTimer') {
+        dominationActive = false;
+        dominationTimeLeft = 0;
+        timerElement.style.display = 'none';
+      }
+
+      if (data.action === "setSpeakersExit") {
+        const container = document.getElementById("radioVoiceContainer");
+        container.innerHTML = ""; // limpa tudo antes
+
+        if (Array.isArray(data.data)) {
+          data.data.forEach(speaker => {
+            const voiceElem = document.createElement("div");
+            voiceElem.className = "radio-voice";
+            voiceElem.innerHTML = `<i class="fa-solid fa-volume-high"></i> <span>#${speaker.id} | ${speaker.name}</span>`;
+            container.appendChild(voiceElem);
+          });
+        }
+      }
+
+    });
+
+    function processKillQueue() {
+      if (killQueue.length === 0) return;
+      isKillShowing = true;
+      const { victim, icon } = killQueue.shift();
+      const container = document.getElementById('killContainer');
+      const notif = document.createElement('div');
+      notif.className = 'kill-notify';
+      const iconClass = icon === "skull" ? "fa-skull" : "fa-person-falling";
+      notif.innerHTML = `<i class="fa-solid ${iconClass}"></i><span>${victim}</span>`;
+      container.appendChild(notif);
+      setTimeout(() => {
+        notif.remove();
+        isKillShowing = false;
+        processKillQueue();
+      }, 2800);
+    }
+
+    setInterval(() => {
+      if (dominationActive && dominationTimeLeft > 0) {
+        dominationTimeLeft--;
+        updateTimerDisplay();
+      }
+    }, 1000);
+
+    function updateTimerDisplay() {
+      const minutes = Math.floor(dominationTimeLeft / 60);
+      const seconds = dominationTimeLeft % 60;
+      timerText.innerHTML = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+
+    document.addEventListener("keydown", function (event) {
+      if (event.code === "KeyK") {
+        container.classList.remove("show");
+        fetch("https://identity/hideTop", { method: "POST" });
+      }
+    });
+  </script>
+</body>
+
+</html>

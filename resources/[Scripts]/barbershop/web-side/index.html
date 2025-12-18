@@ -1,0 +1,367 @@
+<html>
+<head>
+    <title>#creative</title>
+    <script src="nui://game/ui/jquery.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<img id="cursorPointer" src="assets/cursor.png">
+<div class="openBarbershop">
+    <div class="tab" style="justify-content:center;">
+        <div class="barbershop-logo" style="width:100%;">
+            <img src="https://cdn.discordapp.com/attachments/1410728222135685160/1422042103873147001/5b7864477b3fb271f2ac4cae977ea212.jpg?ex=68db3b69&is=68d9e9e9&hm=fed748bb235bfbfef833db72a8f7d1d71c647f4b1798dbfe128834dba5f2abb9&" style="width:100%;max-width:unset;max-height:80px;object-fit:cover;" />
+        </div>
+    </div>
+
+    <form id="formBarbershop">
+
+        <!--<div class="block visage">
+            <div class="group" style="padding-top: 0;">
+
+                <div class="input">
+                    <div class="label">Pai</div>
+                    <div class="label-value" data-legend="44"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="father" id="father" max="44" min="0" type="range" value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Semblante</div>
+                    <div class="label-value" data-legend="1.0"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="shapemix" id="shapemix" max="1.0" min="0.0" step="0.05" type="range" value="0.55">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Mãe</div>
+                    <div class="label-value" data-legend="45"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="mother" id="mother" max="45" min="21" type="range" value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Cor da Pele</div>
+                    <div class="label-value" data-legend="12"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="skincolor" id="skincolor" max="12" min="0" type="range" value="6">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Cor dos Olhos</div>
+                    <div class="label-value" data-legend="32"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="eyescolor" id="eyescolor" max="32" min="0" type="range" value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Largura do Pescoço</div>
+                    <div class="label-value" data-legend="0.99"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="neckwidth" id="neckwidth" max="0.99" min="-1.0" step="0.01" type="range"
+                               value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Largura dos Lábios</div>
+                    <div class="label-value" data-legend="0.99"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="lips" id="lips" max="0.99" min="-1.0" step="0.01" type="range" value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Comprimento do Queixo</div>
+                    <div class="label-value" data-legend="0.99"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="chinlength" id="chinlength" max="0.99" min="-1.0" step="0.01" type="range"
+                               value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Posição do Queixo</div>
+                    <div class="label-value" data-legend="0.99"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="chinposition" id="chinposition" max="0.99" min="-1.0" step="0.01" type="range"
+                               value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Largura do Queixo</div>
+                    <div class="label-value" data-legend="0.99"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="chinwidth" id="chinwidth" max="0.99" min="-1.0" step="0.01" type="range"
+                               value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Forma do Queixo</div>
+                    <div class="label-value" data-legend="0.99"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="chinshape" id="chinshape" max="0.99" min="-1.0" step="0.01" type="range"
+                               value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Largura do Nariz</div>
+                    <div class="label-value" data-legend="0.99"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="nose" id="nose" max="0.99" min="-1.0" step="0.01" type="range" value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Altura do Nariz</div>
+                    <div class="label-value" data-legend="0.99"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="noseheight" id="noseheight" max="0.99" min="-1.0" step="0.01" type="range"
+                               value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Comprimento do Nariz</div>
+                    <div class="label-value" data-legend="0.99"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="nosemargin" id="nosemargin" max="0.99" min="-1.0" step="0.01" type="range"
+                               value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Deslocamento da Ponte Nasal</div>
+                    <div class="label-value" data-legend="0.99"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="nosebridge" id="nosebridge" max="0.99" min="-1.0" step="0.01" type="range"
+                               value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Ponta do Nariz</div>
+                    <div class="label-value" data-legend="0.99"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="nosetip" id="nosetip" max="0.99" min="-1.0" step="0.01" type="range" value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Tamanho da Bochecha</div>
+                    <div class="label-value" data-legend="0.99"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="cheekbone" id="cheekbone" max="0.99" min="-1.0" step="0.01" type="range"
+                               value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Largura da Bochecha</div>
+                    <div class="label-value" data-legend="0.99"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="cheekbonemargin" id="cheekbonemargin" max="0.99" min="-1.0" step="0.01" type="range"
+                               value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Altura da Bochecha</div>
+                    <div class="label-value" data-legend="0.99"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="cheekboneheight" id="cheekboneheight" max="0.99" min="-1.0" step="0.01" type="range"
+                               value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Largura da Mandíbula</div>
+                    <div class="label-value" data-legend="0.99"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="lipsmargin" id="lipsmargin" max="0.99" min="-1.0" step="0.01" type="range"
+                               value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Tamanho da Mandíbula</div>
+                    <div class="label-value" data-legend="0.99"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="lipsheight" id="lipsheight" max="0.99" min="-1.0" step="0.01" type="range"
+                               value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>-->
+
+        <div class="block pilosite active">
+            <div class="group" style="padding-top: 0;">
+
+                <div class="input">
+                    <div class="label">Cabelo</div>
+                    <div class="label-value" data-legend="250" id="data-legend-hair"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="hairmodel" id="hairmodel" max="250" min="0" step="1" type="range" value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Cor do Cabelo</div>
+                    <div class="label-value" data-legend="63"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="hairfirstcolor" id="hairfirstcolor" max="63" min="0" type="range" value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Reflexo do Cabelo</div>
+                    <div class="label-value" data-legend="63"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="hairsecondarycolor" id="hairsecondarycolor" max="60" min="0" type="range"
+                               value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Barba</div>
+                    <div class="label-value" data-legend="28"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="beard" id="beard" max="28" min="-1" type="range" value="-1">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Cor da Barba</div>
+                    <div class="label-value" data-legend="63"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="beardcolor" id="beardcolor" max="63" min="0" type="range" value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Sobrancelha</div>
+                    <div class="label-value" data-legend="33"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="eyebrows" id="eyebrows" max="33" min="0" type="range">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Cor da sobrancelha</div>
+                    <div class="label-value" data-legend="63"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="eyebrowscolor" id="eyebrowscolor" max="63" min="0" type="range" value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Blush</div>
+                    <div class="label-value" data-legend="7"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="blush" id="blush" max="7" min="-1" type="range" value="-1">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Cor do Blush</div>
+                    <div class="label-value" data-legend="63"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="blushcolor" id="blushcolor" max="63" min="0" type="range" value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Batom</div>
+                    <div class="label-value" data-legend="9"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="lipstick" id="lipstick" max="9" min="-1" type="range" value="-1">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Cor do Batom</div>
+                    <div class="label-value" data-legend="63"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="lipstickcolor" id="lipstickcolor" max="63" min="0" type="range" value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Maquiagem</div>
+                    <div class="label-value" data-legend="80"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="makeup" id="makeup" max="80" min="-1" type="range" value="-1">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Pelo Corporal</div>
+                    <div class="label-value" data-legend="16"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="chest" id="chest" max="16" min="-1" type="range" value="-1">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">Cor do Pelo Corporal</div>
+                    <div class="label-value" data-legend="63"></div>
+                    <div class="type-range">
+                        <a class="arrow arrow-left" href="#">&nbsp;</a>
+                        <input class="chestcolor" id="chestcolor" max="63" min="0" type="range" value="0">
+                        <a class="arrow arrow-right" href="#">&nbsp;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="submit">S  A  L  V  A  R</button>
+    </form>
+</div>
+
+<script src="front.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

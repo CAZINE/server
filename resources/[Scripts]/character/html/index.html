@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criador de Personagem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script>console.log('INDEX.HTML CARREGADO');</script>
+    <div id="creator" class="creator-ui" style="display:none;">
+        <h2>Criar Personagem</h2>
+        <form id="form">
+            <div id="step-1" class="wizard-step">
+                <div class="slider-row"><div class="slider-label">Pai</div><input type="range" name="father" min="0" max="45" value="0" class="slider"></div>
+                <div class="slider-row"><div class="slider-label">Mãe</div><input type="range" name="mother" min="0" max="45" value="0" class="slider"></div>
+                <div class="slider-row"><div class="slider-label">Pele</div><input type="range" name="skin" min="0" max="1" step="0.01" value="0.5" class="slider"></div>
+                <div class="slider-row"><div class="slider-label">Olhos</div><input type="range" name="eyeColor" min="0" max="31" value="0" class="slider"></div>
+                <div class="slider-row"><div class="slider-label">Cabelo</div><input type="range" name="hairColor" min="0" max="63" value="0" class="slider"></div>
+                <div class="slider-row"><div class="slider-label">Corte</div><input type="range" name="hairStyle" min="0" max="36" value="0" class="slider"></div>
+                <div class="slider-row"><div class="slider-label">Maquiagem</div><input type="range" name="makeup" min="0" max="10" value="0" class="slider"></div>
+                <button type="button" id="next-1" class="wizard-next">Próximo</button>
+            </div>
+            <div id="step-2" class="wizard-step" style="display:none;">
+                <div class="slider-row"><div class="slider-label">Casaco</div><input type="range" name="jacket" min="0" max="200" value="0" class="slider"><input type="number" name="jacketTexture" min="0" max="200" value="0" class="texture-input"></div>
+                <div class="slider-row"><div class="slider-label">Camisa</div><input type="range" name="shirt" min="0" max="200" value="0" class="slider"><input type="number" name="shirtTexture" min="0" max="200" value="0" class="texture-input"></div>
+                <div class="slider-row"><div class="slider-label">Box</div><input type="range" name="box" min="0" max="200" value="0" class="slider"><input type="number" name="boxTexture" min="0" max="200" value="0" class="texture-input"></div>
+                <div class="slider-row"><div class="slider-label">Calça</div><input type="range" name="pants" min="0" max="200" value="0" class="slider"><input type="number" name="pantsTexture" min="0" max="200" value="0" class="texture-input"></div>
+                <div class="slider-row"><div class="slider-label">Sapato</div><input type="range" name="shoes" min="0" max="200" value="0" class="slider"><input type="number" name="shoesTexture" min="0" max="200" value="0" class="texture-input"></div>
+                <div class="slider-row"><div class="slider-label">Acessório</div><input type="range" name="accessory" min="0" max="200" value="0" class="slider"><input type="number" name="accessoryTexture" min="0" max="200" value="0" class="texture-input"></div>
+                <div class="slider-row"><div class="slider-label">Chapéu</div><input type="range" name="hat" min="0" max="200" value="0" class="slider"><input type="number" name="hatTexture" min="0" max="200" value="0" class="texture-input"></div>
+                <div class="slider-row"><div class="slider-label">Óculos</div><input type="range" name="glasses" min="0" max="200" value="0" class="slider"><input type="number" name="glassesTexture" min="0" max="200" value="0" class="texture-input"></div>
+                <div class="slider-row"><div class="slider-label">Máscara</div><input type="range" name="mask" min="0" max="200" value="0" class="slider"><input type="number" name="maskTexture" min="0" max="200" value="0" class="texture-input"></div>
+                <div class="slider-row"><div class="slider-label">Mãos</div><input type="range" name="hands" min="0" max="200" value="0" class="slider"><input type="number" name="handsTexture" min="0" max="200" value="0" class="texture-input"></div>
+                <button type="button" id="back-2" class="wizard-back">Voltar</button>
+                <button type="button" id="next-2" class="wizard-next">Próximo</button>
+            </div>
+            <div id="step-3" class="wizard-step" style="display:none;">
+                <div class="slider-row"><div class="slider-label">Braço Direito</div><input type="range" name="tattoo_arm_r" min="0" max="19" value="0" step="1" class="slider-tattoo"></div>
+                <div class="slider-row"><div class="slider-label">Braço Esquerdo</div><input type="range" name="tattoo_arm_l" min="0" max="19" value="0" step="1" class="slider-tattoo"></div>
+                <div class="slider-row"><div class="slider-label">Perna Direita</div><input type="range" name="tattoo_leg_r" min="0" max="19" value="0" step="1" class="slider-tattoo"></div>
+                <div class="slider-row"><div class="slider-label">Perna Esquerda</div><input type="range" name="tattoo_leg_l" min="0" max="19" value="0" step="1" class="slider-tattoo"></div>
+                <div class="slider-row"><div class="slider-label">Costas</div><input type="range" name="tattoo_back" min="0" max="19" value="0" step="1" class="slider-tattoo"></div>
+                <div class="slider-row"><div class="slider-label">Peito</div><input type="range" name="tattoo_chest" min="0" max="19" value="0" step="1" class="slider-tattoo"></div>
+                <button type="button" id="back-3" class="wizard-back">Voltar</button>
+                <button type="button" id="save" class="svg-save-btn">
+                    <span>Salvar</span>
+                    <svg class="save-icon" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle class="circle-anim" cx="11" cy="11" r="10" stroke="#fff" stroke-width="2"/>
+                      <path d="M6 11.5L10 15L16 8.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

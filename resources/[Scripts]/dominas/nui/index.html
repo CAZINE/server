@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>FIRE Kill Notify UI</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    .kill-container {
+      position: absolute;
+      bottom: 250px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    .kill-notify {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 14px;
+      color: #fff;
+      gap: 2px;
+      animation: killPop 2.8s ease forwards;
+    }
+
+    .kill-notify i {
+      color: #450a61;
+      font-size: 17px;
+    }
+
+    @keyframes killPop {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      10% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      80% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+    }
+
+    .discord-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      position: absolute;
+      bottom: 32px;
+      left: 32px;
+      right: auto;
+      top: auto;
+      transform: none;
+      font-size: 14px;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 999;
+      background: rgba(0,0,0,0.25);
+      padding: 6px 16px;
+      border-radius: 8px;
+    }
+
+    .discord-tag .white {
+      color: white;
+    }
+
+    .discord-tag .red {
+      color: #450a61;
+    }
+
+    .timer-container {
+      position: absolute;
+      top: 74vh;
+      left: 42px;
+      background: rgba(20, 20, 20, 0.75);
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      display: none;
+      align-items: center;
+      gap: 6px;
+      animation: fadeIn 0.4s ease forwards;
+      z-index: 1000;
+    }
+
+    .timer-container i {
+      color: #450a61;
+      font-size: 14px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Texto fixo do Discord -->
+  <div class="discord-tag">
+    
+  </div>
+
+  <!-- Container das notificações -->
+  <div class="kill-container" id="killContainer"></div>
+
+  <!-- Timer -->
+  <div class="timer-container" id="timerContainer">
+    <i class="fa-solid fa-clock"></i> <span id="timerText">03:00</span>
+  </div>
+
+  <script>
+    const killQueue = [];
+    let isKillShowing = false;
+
+    let dominationActive = false;
+    let dominationTimeLeft = 0;
+    const timerElement = document.getElementById('timerContainer');
+    const timerText = document.getElementById('timerText');
+
+    window.addEventListener('message', function (event) {
+      const data = event.data;
+
+      if (data.type === 'notifyKill' && data.victim) {
+        killQueue.push({ victim: data.victim, icon: data.icon || "gun" });
+        if (!isKillShowing) processKillQueue();
+      }
+
+      if (data.type === 'notifyDomination' && data.text) {
+        showDominationNotify(data.text);
+      }
+
+      if (data.type === 'startTimer') {
+        dominationActive = true;
+        dominationTimeLeft = data.time;
+        timerElement.style.display = 'flex';
+        updateTimerDisplay();
+      }
+
+      if (data.type === 'stopTimer') {
+        dominationActive = false;
+        dominationTimeLeft = 0;
+        timerElement.style.display = 'none';
+      }
+    });
+
+    function processKillQueue() {
+      if (killQueue.length === 0) return;
+      isKillShowing = true;
+
+      const { victim, icon } = killQueue.shift();
+      const container = document.getElementById('killContainer');
+
+      const notif = document.createElement('div');
+      notif.className = 'kill-notify';
+      const iconClass = icon === "skull" ? "fa-skull" : "fa-person-falling";
+
+      notif.innerHTML = `<i class="fa-solid ${iconClass}"></i><span>${victim}</span>`;
+      container.appendChild(notif);
+
+      setTimeout(() => {
+        notif.remove();
+        isKillShowing = false;
+        processKillQueue();
+      }, 2800);
+    }
+
+    function showDominationNotify(text) {
+      const container = document.getElementById('killContainer');
+      const notif = document.createElement('div');
+      notif.className = 'kill-notify';
+      notif.innerHTML = `<i class="fa-solid fa-flag"></i><span>${text}</span>`;
+      container.appendChild(notif);
+      setTimeout(() => notif.remove(), 2800);
+    }
+
+    setInterval(() => {
+      if (dominationActive && dominationTimeLeft > 0) {
+        dominationTimeLeft--;
+        updateTimerDisplay();
+      }
+    }, 1000);
+
+    function updateTimerDisplay() {
+      const minutes = Math.floor(dominationTimeLeft / 60);
+      const seconds = dominationTimeLeft % 60;
+      timerText.innerHTML = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+  </script>
+</body>
+
+</html>

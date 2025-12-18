@@ -1,0 +1,2 @@
+-- Arquivo compartilhado para utilidades do script de carro
+-- Adicione funções utilitárias aqui, se necessário

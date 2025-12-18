@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Organizações</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+  <div id="nui-overlay" class="nui-overlay">
+  </div>
+  <div class="create-org-box" id="create-org-box">
+    <div class="create-org-title">Criar Organização</div>
+    <input type="text" id="org-name-input" placeholder="Nome da organização"/>
+    <button id="create-org-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="btn-icon">
+        <path d="M3 21H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5 21V7L13 2L21 7V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9 9V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M15 9V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9 17V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M15 17V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="12" cy="12" r="1" fill="currentColor" class="pulse-dot"/>
+      </svg>
+      Criar
+    </button>
+  </div>
+  <div class="org-panel" id="org-panel">
+    <div class="org-header">
+      <div>
+        <div class="org-title">WHTY</div>
+        <div class="org-subtitle">ORGANIZAÇÕES</div>
+      </div>
+      <div class="invite-section">
+        <input type="text" id="invite-passport" placeholder="PASSAPORTE"/>
+        <button id="invite-btn" disabled>ENVIAR CONVITE</button>
+      </div>
+    </div>
+    <div class="org-list-header">
+      <span>LISTA DE MEMBROS (7/105)</span>
+    </div>
+    <div class="org-table">
+      <div class="org-table-header">
+        <span>Nome</span>
+        <span>ID</span>
+        <span>Cargo</span>
+        <span>Último Login</span>
+        <span></span>
+      </div>
+      <div class="org-table-body" id="members-list">
+        <div class="org-table-row owner-row">
+          <span class="member-name">
+            <svg class="role-icon owner-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="crownGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                  <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#FF8C00;stop-opacity:1" />
+                </linearGradient>
+                <filter id="crownGlow">
+                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                  <feMerge> 
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="url(#crownGradient)" filter="url(#crownGlow)"/>
+              <circle cx="12" cy="12" r="1.5" fill="#FFD700" opacity="0.8">
+                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+              </circle>
+            </svg>
+            <span class="owner-name">Você (Dono)</span>
+          </span>
+          <span class="owner-id">00001</span>
+          <span class="owner-role">Dono</span>
+          <span class="owner-status">Agora</span>
+          <div class="action-buttons">
+            <div class="owner-badge-container">
+              <svg class="crown-badge" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="badgeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+                <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="url(#badgeGradient)">
+                  <animateTransform attributeName="transform" type="rotate" values="0 12 12;5 12 12;0 12 12;-5 12 12;0 12 12" dur="4s" repeatCount="indefinite"/>
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="org-table-row">
+          <span class="member-name">
+            <svg class="role-icon vice-leader-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="viceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#1D50F2;stop-opacity:1" />
+                  <stop offset="50%" style="stop-color:#073de2;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#07216E;stop-opacity:1" />
+                </linearGradient>
+                <filter id="viceGlow">
+                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                  <feMerge> 
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              <path d="M12 2L13.09 8.26L20 9L14 14L15.18 21L12 17.77L8.82 21L10 14L4 9L10.91 8.26L12 2Z" fill="url(#viceGradient)" filter="url(#viceGlow)">
+                <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="3s" repeatCount="indefinite"/>
+              </path>
+              <circle cx="12" cy="12" r="1" fill="#1D50F2" opacity="0.7">
+                <animate attributeName="opacity" values="0.7;1;0.7" dur="2.5s" repeatCount="indefinite"/>
+              </circle>
+            </svg>
+            Maria Santos
+          </span>
+          <span>12346</span>
+          <span>Vice-Líder</span>
+          <span>Hoje 12:15</span>
+          <div class="action-buttons">
+            <button class="role-btn" title="Alterar cargo">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="roleBtnGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#1D50F2;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#073de2;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+                <path d="M12 2L13.09 8.26L20 9L14 14L15.18 21L12 17.77L8.82 21L10 14L4 9L10.91 8.26L12 2Z" stroke="url(#roleBtnGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                  <animateTransform attributeName="transform" type="rotate" values="0 12 12;360 12 12" dur="8s" repeatCount="indefinite"/>
+                </path>
+              </svg>
+            </button>
+            <button class="remove-btn" title="Remover membro">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="removeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#FF5C5C;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#FF2222;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+                <path d="M18 6L6 18M6 6L18 18" stroke="url(#removeGradient)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <animate attributeName="stroke-width" values="2.5;3.5;2.5" dur="2s" repeatCount="indefinite"/>
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="org-table-row">
+          <span class="member-name">
+            <svg class="role-icon member-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="memberGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#073de2;stop-opacity:1" />
+                  <stop offset="50%" style="stop-color:#0F39BD;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#07216E;stop-opacity:1" />
+                </linearGradient>
+                <filter id="memberGlow">
+                  <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                  <feMerge> 
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="url(#memberGradient)" filter="url(#memberGlow)">
+                <animateTransform attributeName="transform" type="scale" values="1;1.05;1" dur="4s" repeatCount="indefinite"/>
+              </path>
+              <circle cx="12" cy="8" r="2" fill="#073de2" opacity="0.6">
+                <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+              </circle>
+            </svg>
+            Pedro Costa
+          </span>
+          <span>12347</span>
+          <span>Membro</span>
+          <span>Ontem 18:45</span>
+          <div class="action-buttons">
+            <button class="role-btn" title="Alterar cargo">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="roleBtnGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#1D50F2;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#073de2;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+                <path d="M12 2L13.09 8.26L20 9L14 14L15.18 21L12 17.77L8.82 21L10 14L4 9L10.91 8.26L12 2Z" stroke="url(#roleBtnGradient2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                  <animateTransform attributeName="transform" type="rotate" values="0 12 12;360 12 12" dur="8s" repeatCount="indefinite"/>
+                </path>
+              </svg>
+            </button>
+            <button class="remove-btn" title="Remover membro">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="removeGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#FF5C5C;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#FF2222;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+                <path d="M18 6L6 18M6 6L18 18" stroke="url(#removeGradient2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <animate attributeName="stroke-width" values="2.5;3.5;2.5" dur="2s" repeatCount="indefinite"/>
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="org-table-row">
+          <span class="member-name">
+            <svg class="role-icon member-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="currentColor"/>
+            </svg>
+            Ana Oliveira
+          </span>
+          <span>12348</span>
+          <span>Membro</span>
+          <span>Ontem 16:20</span>
+          <div class="action-buttons">
+            <button class="role-btn" title="Alterar cargo">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L13.09 8.26L20 9L14 14L15.18 21L12 17.77L8.82 21L10 14L4 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="remove-btn" title="Remover membro">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="org-table-row">
+          <span class="member-name">
+            <svg class="role-icon member-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="currentColor"/>
+            </svg>
+            Carlos Lima
+          </span>
+          <span>12349</span>
+          <span>Membro</span>
+          <span>2 dias atrás</span>
+          <div class="action-buttons">
+            <button class="role-btn" title="Alterar cargo">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L13.09 8.26L20 9L14 14L15.18 21L12 17.77L8.82 21L10 14L4 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="remove-btn" title="Remover membro">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="org-table-row">
+          <span class="member-name">
+            <svg class="role-icon member-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="currentColor"/>
+            </svg>
+            Fernanda Rocha
+          </span>
+          <span>12350</span>
+          <span>Membro</span>
+          <span>3 dias atrás</span>
+          <div class="action-buttons">
+            <button class="role-btn" title="Alterar cargo">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L13.09 8.26L20 9L14 14L15.18 21L12 17.77L8.82 21L10 14L4 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="remove-btn" title="Remover membro">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="notification-container" id="notification-container">
+    <!-- Notificações aparecerão aqui -->
+  </div>
+  
+  <!-- Modal de confirmação -->
+  <div class="modal-overlay" id="confirm-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Confirmação</h3>
+      </div>
+      <div class="modal-body">
+        <p id="confirm-message">Tem certeza que deseja realizar esta ação?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn modal-btn-cancel" id="confirm-cancel">Cancelar</button>
+        <button class="modal-btn modal-btn-confirm" id="confirm-ok">Confirmar</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="app.js"></script>
+</body>
+</html> 
