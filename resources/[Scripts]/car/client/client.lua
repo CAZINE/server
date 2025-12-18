@@ -41,8 +41,6 @@ end
 
 local carMenuCooldown = false
 
-RegisterKeyMapping('openCarMenu', 'Abrir menu de veículos', 'keyboard', 'F2')
-
 RegisterCommand('openCarMenu', function()
     if carMenuCooldown then
         TriggerEvent('Notify', 'amarelo', 'Aguarde alguns segundos para abrir novamente.', 3000)
@@ -65,6 +63,9 @@ RegisterCommand('openCarMenu', function()
 
     requestVehicleMenu()
 end)
+
+-- Registrar mapeamento de tecla APÓS declarar o comando para garantir compatibilidade
+RegisterKeyMapping('openCarMenu', 'Abrir menu de veículos', 'keyboard', 'F2')
 
 RegisterNUICallback('close', function(_, cb)
     closeSpawn()
@@ -146,7 +147,6 @@ end)
 --    end
 --end)
 
-RegisterKeyMapping('spawnLastVehicle', 'Spawnar último veículo', 'keyboard', 'G')
 RegisterCommand('spawnLastVehicle', function()
     local ped = PlayerPedId()
 
@@ -164,6 +164,9 @@ RegisterCommand('spawnLastVehicle', function()
 
     TriggerServerEvent("car:spawnLastVehicle")
 end)
+
+-- Registrar mapeamento de tecla APÓS declarar o comando
+RegisterKeyMapping('spawnLastVehicle', 'Spawnar último veículo', 'keyboard', 'G')
 
 --AddEventHandler('gameEventTriggered', function(name, data)
 --    if name ~= 'CEventNetworkPlayerEnteredVehicle' then return end

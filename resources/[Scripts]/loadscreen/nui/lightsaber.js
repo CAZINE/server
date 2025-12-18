@@ -210,3 +210,68 @@ window.addEventListener('message', function(event) {
         }, 500);
     }
 });
+
+// Suporte para exibir GIFs / vídeos / YouTube via NUI
+function showMedia(url) {
+    const container = document.getElementById('media-container');
+    if (!container) return;
+    container.innerHTML = '';
+    container.style.display = 'flex';
+    // detectar YouTube
+    const ytMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{6,})/i);
+    if (ytMatch) {
+        const id = ytMatch[1];
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&mute=1&controls=1&rel=0&modestbranding=1';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = '0';
+        iframe.allow = 'autoplay; fullscreen';
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.style.pointerEvents = 'auto';
+        container.appendChild(iframe);
+        return;
+    }
+
+    // detectar vídeo direto (mp4/webm)
+    if (url.match(/\.(mp4|webm|ogg)(\?.*)?$/i)) {
+        const vid = document.createElement('video');
+        vid.src = url;
+        vid.autoplay = true; vid.loop = true; vid.muted = true; vid.playsInline = true;
+        vid.style.width = '100%'; vid.style.height = '100%'; vid.style.objectFit = 'cover';
+        vid.style.pointerEvents = 'auto';
+        container.appendChild(vid);
+        vid.play().catch(() => {});
+        return;
+    }
+
+    // por padrão tratar como imagem (GIF ou PNG/JPG)
+    const img = document.createElement('img');
+    img.src = url;
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'cover';
+    img.style.pointerEvents = 'auto';
+    container.appendChild(img);
+}
+
+function hideMedia() {
+    const container = document.getElementById('media-container');
+    if (!container) return;
+    container.style.display = 'none';
+    container.innerHTML = '';
+}
+
+// Estender handler NUI
+window.addEventListener('message', function(event) {
+    const data = event.data || {};
+    if (data.action === 'showGif' && data.url) {
+        showMedia(data.url);
+    }
+    if (data.action === 'showMedia' && data.url) {
+        showMedia(data.url);
+    }
+    if (data.action === 'hideMedia') {
+        hideMedia();
+    }
+});
