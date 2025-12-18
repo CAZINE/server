@@ -12,24 +12,25 @@
 
 <body>
 
-    <div id="fare"></div>
+    <!-- POINTER MOUSE -->
     <div class="banner">
         <video autoplay muted loop>
             <source
-                src="https://cdn.discordapp.com/attachments/1363034058858430614/1396928227540205648/Design_sem_nome.mp4?ex=687fde4b&is=687e8ccb&hm=c9a8dbdee35644ca14a1299e770a2f7357484706317859a67f330dda9cb51a55&"
-                type="video/mp4">
+            src="https://cdn.discordapp.com/attachments/1363034058858430614/1396928227540205648/Design_sem_nome.mp4?ex=687fde4b&is=687e8ccb&hm=c9a8dbdee35644ca14a1299e770a2f7357484706317859a67f330dda9cb51a55&"
+            type="video/mp4">
         </video>
     </div>
-
+    
     <!-- Container para mídia externa (GIF / vídeo /YouTube) -->
     <div id="media-container" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;pointer-events:none;">
     </div>
-
+    
     <div class="player">
+         <div id="fare"></div>
         <span id="arm"></span>
         <ul>
             <li class="info">
-
+                
                 <h2 id="song">loading</h2>
                 <div class="button-items">
                     <audio id="music" preload="auto">
@@ -44,7 +45,7 @@
                             <svg id="previous" class="step-backward" viewBox="0 0 25 25" xml:space="preserve">
                                 <g>
                                     <polygon
-                                        points="4.9,4.3 9,4.3 9,11.6 21.4,4.3 21.4,20.7 9,13.4 9,20.7 4.9,20.7" />
+                                    points="4.9,4.3 9,4.3 9,11.6 21.4,4.3 21.4,20.7 9,13.4 9,20.7 4.9,20.7" />
                                 </g>
                             </svg>
                         </span>
@@ -55,7 +56,7 @@
                             <g>
                                 <circle fill="none" cx="12.5" cy="12.5" r="10.8" />
                                 <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M8.7,6.9V18c0,0,0.2,1.4,1.8,0l8.1-4.8c0,0,1.2-1.1-1-2L9.8,6.5 C9.8,6.5,9.1,6,8.7,6.9z" />
+                                d="M8.7,6.9V18c0,0,0.2,1.4,1.8,0l8.1-4.8c0,0,1.2-1.1-1-2L9.8,6.5 C9.8,6.5,9.1,6,8.7,6.9z" />
                             </g>
                         </svg>
                         <svg id="pause" viewBox="0 0 25 25" xml:space="preserve">
@@ -68,7 +69,7 @@
                             <svg id="next" class="step-foreward" viewBox="0 0 25 25" xml:space="preserve">
                                 <g>
                                     <polygon
-                                        points="20.7,4.3 16.6,4.3 16.6,11.6 4.3,4.3 4.3,20.7 16.7,13.4 16.6,20.7 20.7,20.7" />
+                                    points="20.7,4.3 16.6,4.3 16.6,11.6 4.3,4.3 4.3,20.7 16.7,13.4 16.6,20.7 20.7,20.7" />
                                 </g>
                             </svg>
                         </span>
@@ -81,6 +82,7 @@
             </li>
         </ul>
     </div>
+   
     <script src="lightsaber.js" type="text/javascript"></script>
 </body>
 
