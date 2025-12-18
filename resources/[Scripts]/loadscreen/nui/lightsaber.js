@@ -10,6 +10,12 @@ var playlist = [
         "album": "N/A",
         "artist": "MC Joãozinho VT",
         "mp3": "../music/DJ-BOY.mp3"
+    }, 
+    {
+        "song": "Cana da Choque ",
+        "album": "Cordeiro",
+        "artist": "Pedrin",
+        "mp3": "../music/Pedrin-Cana-da-Choque.mp3"
     }
 ];
 
