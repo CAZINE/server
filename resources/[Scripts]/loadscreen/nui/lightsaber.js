@@ -228,7 +228,7 @@ function showMedia(url) {
         iframe.style.border = '0';
         iframe.allow = 'autoplay; fullscreen';
         iframe.setAttribute('allowfullscreen', '');
-        iframe.style.pointerEvents = 'auto';
+        iframe.style.pointerEvents = 'none';
         container.appendChild(iframe);
         return;
     }
@@ -239,7 +239,7 @@ function showMedia(url) {
         vid.src = url;
         vid.autoplay = true; vid.loop = true; vid.muted = true; vid.playsInline = true;
         vid.style.width = '100%'; vid.style.height = '100%'; vid.style.objectFit = 'cover';
-        vid.style.pointerEvents = 'auto';
+        vid.style.pointerEvents = 'none';
         container.appendChild(vid);
         vid.play().catch(() => {});
         return;
@@ -251,7 +251,7 @@ function showMedia(url) {
     img.style.width = '100%';
     img.style.height = '100%';
     img.style.objectFit = 'cover';
-    img.style.pointerEvents = 'auto';
+    img.style.pointerEvents = 'none';
     container.appendChild(img);
 }
 
@@ -274,4 +274,11 @@ window.addEventListener('message', function(event) {
     if (data.action === 'hideMedia') {
         hideMedia();
     }
+});
+
+// MOSTRAR automaticamente screen.gif ao carregar (remova se não quiser comportamento automático)
+window.addEventListener('load', function() {
+    try {
+        showMedia('imagens/screen.gif');
+    } catch (e) { console.error('Erro ao mostrar screen.gif', e); }
 });
