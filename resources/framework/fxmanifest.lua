@@ -1,8 +1,8 @@
 fx_version 'cerulean'
 game 'gta5'
 
-author 'PvP Framework'
-description 'Framework completo para servidor PvP'
+author 'Caos PVP'
+description  'Servidor PvP, Equipe trocação de tiro'
 version '1.0.0'
 
 -- Arquivos compartilhados (devem ser carregados primeiro)

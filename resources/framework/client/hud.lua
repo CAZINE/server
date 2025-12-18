@@ -82,7 +82,7 @@ function DrawHUD()
     -- Kills
     if Config.HUD.showKills then
         SetTextScale(0.6 * scale, 0.6 * scale)
-        SetTextColour(colors.green[1], colors.green[2], colors.green[3], colors.green[4])
+        SetTextColour(colors.blue[1], colors.blue[2], colors.blue[3], colors.blue[4])
         SetTextEntry("STRING")
         AddTextComponentString("Kills: " .. HUDData.kills)
         DrawText(x, y)
@@ -119,7 +119,7 @@ function DrawHUD()
     
     -- Health Bar
     local healthPercent = HUDData.health / 200.0
-    local healthColor = healthPercent > 0.5 and colors.green or (healthPercent > 0.25 and colors.yellow or colors.red)
+    local healthColor = healthPercent > 0.5 and colors.blue or (healthPercent > 0.25 and colors.yellow or colors.red)
     
     DrawRect(x + 100, y + 10, 200 * scale, 15 * scale, 0, 0, 0, 200)
     DrawRect(x + 100, y + 10, 200 * healthPercent * scale, 15 * scale, healthColor[1], healthColor[2], healthColor[3], 200)
@@ -199,7 +199,7 @@ function DrawScoreboard()
     SetTextScale(0.7 * scale, 0.7 * scale)
     SetTextColour(255, 255, 0, 255)
     SetTextEntry("STRING")
-    AddTextComponentString("Rank | Name | Kills | Deaths | K/D | Money")
+    AddTextComponentString("Rank | Name | Kills | Mortes | K/D | Money")
     DrawText(x + 20 * scale, y)
     
     y = y + lineHeight
