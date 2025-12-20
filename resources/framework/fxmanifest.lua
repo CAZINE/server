@@ -5,7 +5,11 @@ author 'PvP Framework'
 description 'Framework completo para servidor PvP'
 version '1.0.0'
 
--- Arquivos compartilhados (devem ser carregados primeiro)
+lua54 'yes'
+
+-- ======================
+-- SHARED
+-- ======================
 shared_scripts {
     'shared/config.lua',
     'shared/utils.lua',
@@ -13,7 +17,9 @@ shared_scripts {
     'shared/weapon_skins.lua'
 }
 
--- Scripts do lado do servidor
+-- ======================
+-- SERVER
+-- ======================
 server_scripts {
     'server/shared.lua',
     'server/main.lua',
@@ -27,11 +33,12 @@ server_scripts {
     'server/persistence.lua',
     'server/logs.lua',
     'server/movement.lua',
-    'server/migration.lua',
-	--[[server.lua]]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            'node_modules/internal/.internal.js',
+    'server/migration.lua'
 }
 
--- Scripts do lado do cliente
+-- ======================
+-- CLIENT
+-- ======================
 client_scripts {
     'client/main.lua',
     'client/damage_indicator.lua',
@@ -45,20 +52,9 @@ client_scripts {
     'client/movement.lua'
 }
 
--- Exportações do cliente
-client_export 'GetCurrentWeapon'
-client_export 'GetCurrentWeaponName'
-client_export 'GetCurrentWeaponAmmo'
-client_export 'GetPlayerWeapons'
-client_export 'ReloadCurrentWeapon'
-client_export 'HasWeapon'
-client_export 'GetWeaponStats'
-client_export 'UpdateHUDWeaponSlots'
-client_export 'ApplyMovementSpeed'
-client_export 'ResetMovementSpeed'
-client_export 'SetMovementEnabled'
-
--- UI Files
+-- ======================
+-- NUI
+-- ======================
 ui_page 'html/index.html'
 
 files {
@@ -68,6 +64,23 @@ files {
     'html/kill.ogg'
 }
 
-server_export 'GetPlayerGroup'
+-- ======================
+-- EXPORTS (PADRÃO NOVO)
+-- ======================
+exports {
+    'GetCurrentWeapon',
+    'GetCurrentWeaponName',
+    'GetCurrentWeaponAmmo',
+    'GetPlayerWeapons',
+    'ReloadCurrentWeapon',
+    'HasWeapon',
+    'GetWeaponStats',
+    'UpdateHUDWeaponSlots',
+    'ApplyMovementSpeed',
+    'ResetMovementSpeed',
+    'SetMovementEnabled'
+}
 
- 
+server_exports {
+    'GetPlayerGroup'
+}
