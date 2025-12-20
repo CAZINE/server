@@ -7,6 +7,12 @@ version '1.0.0'
 
 lua54 'yes'
 
+files {
+    'stream/**'
+}
+
+this_is_a_map 'yes'
+
 -- ======================
 -- SHARED
 -- ======================
