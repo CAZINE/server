@@ -17,13 +17,6 @@ local vehicles = {
         vehicleType = "Free",
         image = "./assets/lancer.png",
         minLevel = 1
-    },
-    {
-        name = "urus",
-        spawn = "urus",
-        vehicleType = "Free",
-        image = "./assets/urus.png",
-        minLevel = 1
     }
     
     -- CATEGORIA BLINDADOS (Nível 5-8)
