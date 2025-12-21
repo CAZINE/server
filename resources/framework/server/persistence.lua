@@ -27,6 +27,29 @@ local function GetNextAvailableFixedId()
     return nil -- Todos ocupados
 end
 
+-- Verificação de inicialização do oxmysql para diagnóstico
+CreateThread(function()
+    -- Aguarda recurso oxmysql iniciar
+    local timeout = GetGameTimer() + 30000 -- 30s de timeout
+    while GetResourceState('oxmysql') ~= 'started' and GetGameTimer() < timeout do
+        Wait(500)
+    end
+    if GetResourceState('oxmysql') ~= 'started' then
+        print("[PERSISTENCE][WARN] oxmysql não alcançou estado 'started' em 30s. Verifique se o recurso está ativo e configurado.")
+        return
+    end
+
+    -- Teste simples de query para confirmar conexão
+    local ok, res = pcall(function()
+        return exports.oxmysql:query_async("SELECT 1")
+    end)
+    if ok then
+        print("[PERSISTENCE] oxmysql conectado com sucesso (teste SELECT 1).")
+    else
+        print("[PERSISTENCE][ERROR] Falha ao executar query de teste no oxmysql:", res)
+    end
+end)
+
 -- Função para obter fixed_id por identifier
 local function GetFixedIdByIdentifier(identifier)
     local result = exports.oxmysql:query_async("SELECT fixed_id FROM player_data WHERE identifier = ?", {identifier})
